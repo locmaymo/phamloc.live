@@ -13,7 +13,7 @@ import { config } from "dotenv";
 config();
 
 // Constants for the server and API configuration
-const port = process.env.SERVER_PORT || 3040;
+const port = process.env.PORT || 3040;
 const baseUrl = "https://chat.openai.com";
 const apiUrl = `${baseUrl}/backend-anon/conversation`;
 const refreshInterval = 60000; // Interval to refresh token in ms
@@ -212,10 +212,10 @@ async function handleChatCompletion(req: Request, res: Response) {
         JSON.stringify({
           status: false,
           error: {
-            message: `Error getting a new session, please try again later, if the issue persists, please open an issue on the GitHub repository, https://github.com/PawanOsman/ChatGPT`,
+            message: `Error`,
             type: "invalid_request_error",
           },
-          support: "https://discord.pawan.krd",
+          support: "comment",
         })
       );
 
@@ -405,7 +405,7 @@ async function handleChatCompletion(req: Request, res: Response) {
             "An error occurred. please try again. Additionally, ensure that your request complies with OpenAI's policy.",
           type: "invalid_request_error",
         },
-        support: "https://discord.pawan.krd",
+        support: "comment",
       })
     );
     res.end();
@@ -430,7 +430,7 @@ app.use((req, res) =>
       }) was not found. please make sure to use "http://localhost:3040/v1" as the base URL.`,
       type: "invalid_request_error",
     },
-    support: "https://discord.pawan.krd",
+    support: "comment",
   })
 );
 
