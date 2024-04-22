@@ -5,9 +5,12 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
-    "watch": "tsc-watch --onSuccess \"node dist/app.js\"",
-    "build": "tsc"
+    "start": "node dist/app.js",
+    "postinstall": "tsc",
+    "watch-node": "nodemon dist/app.js",
+    "watch-ts": "tsc -w",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+    
   },
   "author": "Pawan Osman",
   "license": "AGPL-3.0",
